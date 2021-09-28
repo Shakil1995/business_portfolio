@@ -127,7 +127,7 @@ axios.get('/getCourseData')
                     $('#courseDeleteConfirmID').click(function () {
                         // let id=$(this).data('id');
                         let id=$('#courserDeleteID').html();
-                        CourseDelete(id)
+                        CourseDelete(id);
                     })
 
 
@@ -152,17 +152,18 @@ axios.get('/getCourseData')
         function CourseDelete(deleteID) {
             axios.post('/CourserDelete',{id:deleteID})
                 .then(function (response) {
+
                     if(response.data==1){
-                        alert('success');
-                        // $('#deleteModal').modal('hide');
-                        // toastr.success('Delete Success');
-                        //
-                        // getCourseData()
+                        // alert('success');
+                        $('#deleteModal').modal('hide');
+                        toastr.success('Delete Success');
+
+                        getCourseData()
                     }else {
-                        alert('fail');
-                        // $('#deleteModal').modal('hide');
-                        // toastr.error('Delete Fail');
-                        // getCourseData()
+                        // alert('fail');
+                        $('#deleteModal').modal('hide');
+                        toastr.error('Delete Fail');
+                        getCourseData()
                     }
                 })
                 .catch(function (error) {
