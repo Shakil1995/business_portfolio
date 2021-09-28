@@ -11,4 +11,9 @@ class ProjectController extends Controller
 
         return view('Project');
     }
+
+    function getProjectData(){
+        $result =json_decode(ProjectModel::all());
+        return $result;
+    }
 }

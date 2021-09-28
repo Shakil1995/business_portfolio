@@ -24,6 +24,26 @@ Route::get('/getServicesData','ServicesController@getServicesData');
 Route::post('/ServicesDelete','ServicesController@serviceDelete');
 
 
-
+//Course Route
 Route::get('/course','CourseController@CourseIndex');
 Route::get('/getCourseData','CourseController@getCourseData');
+Route::get('/CourserDelete','CourseController@courseDelete');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//project Route
+Route::get('/project','ProjectController@ProjectIndex');
+Route::get('/getProjectData','ProjectController@getProjectData');
+Route::get('/C','ProjectController@serviceDelete');

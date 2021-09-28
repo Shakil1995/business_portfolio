@@ -17,7 +17,17 @@ class CourseController extends Controller
         return $result;
     }
 
+    function  courseDelete(Request $req){
+        $id= $req->input('id');
+        $result= CoursesModel::where('id','=',$id)->delete();
 
+        if($result==true){
+            return  1;
+        }else{
+            return  0;
+        }
+
+    }
 
 
 
