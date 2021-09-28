@@ -1,0 +1,4 @@
+Migration: 
+artisan make:migration vitorTable
+artisan make:Model VitorModel
+php artisan migrate
