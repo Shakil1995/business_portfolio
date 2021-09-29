@@ -16,8 +16,9 @@ class ServicesController extends Controller
        $result =json_decode(ServicesModel::all());
         return $result;
     }
-    function  getServicesDetails (){
-        $result =json_decode(ServicesModel::all());
+    function  getServicesDetails (Request $req){
+        $id= $req->input('id');
+        $result =json_decode(ServicesModel::where('id','=',$id)->get());
         return $result;
     }
 
@@ -32,4 +33,38 @@ class ServicesController extends Controller
        }
 
     }
+
+    function  serviceUpdate(Request $req){
+        $id= $req->input('id');
+        $name= $req->input('name');
+        $des= $req->input('des');
+        $img= $req->input('img');
+
+        $result= ServicesModel::where('id','=',$id)->update(['service_name'=>$name,'service_des'=>$des,'service_img'=>$img]);
+        if($result==true){
+            return  1;
+        }else{
+            return  0;
+        }
+
+    }
+
+
+    function  serviceAdd(Request $req){
+        $name= $req->input('name');
+        $des= $req->input('des');
+        $img= $req->input('img');
+
+        $result= ServicesModel::insert(['service_name'=>$name,'service_des'=>$des,'service_img'=>$img]);
+        if($result==true){
+            return  1;
+        }else{
+            return  0;
+        }
+
+    }
+
+
+
+
 }

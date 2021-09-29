@@ -22,6 +22,12 @@ Route::get('/service','ServicesController@ServicesIndex');
 Route::get('/getServicesData','ServicesController@getServicesData');
 
 Route::post('/ServicesDelete','ServicesController@serviceDelete');
+Route::post('/ServicesDetail','ServicesController@getServicesDetails');
+Route::post('/ServicesUpdate','ServicesController@serviceUpdate');
+Route::post('/ServicesAdd','ServicesController@serviceAdd');
+
+
+
 
 
 //Course Route

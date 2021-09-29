@@ -33,88 +33,28 @@
     </div>
 
 
-{{--<div id="loaderDiv" class="container">--}}
-{{--    <div class="row">--}}
-{{--        <div class="col-md-12 text-center p-5">--}}
 
-{{--            <img class="loading-icon m-5" src="{{asset('images/loder.svg')}}">--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--</div>--}}
-
-
-{{--<div id="wrongDiv"  class="container d-none">--}}
-{{--    <div class="row">--}}
-{{--        <div class="col-md-12 text-center p-5">--}}
-
-{{--            <h1>Something went wrong</h1>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--</div>--}}
 
 
    @endsection
 
 
-{{--@section('script')--}}
+@section('script')
+
+    <script type="text/javascript">
 
 
 
+        //Visitor Table
 
-{{--    <script type="text/javascript">--}}
-
-{{--        // $(document).ready(function() {--}}
-{{--        //     $('#VisitorDt').DataTable();--}}
-{{--        //     $('.dataTables_length').addClass('bs-select');--}}
-{{--        // });--}}
-
-{{--        // getVisitorAllData();--}}
+        $(document).ready(function() {
+            $('#VisitorDt').DataTable();
+            $('.dataTables_length').addClass('bs-select');
+        });
 
 
+    </script>
 
 
 
-
-
-
-
-
-
-{{--        // function getVisitorAllData() {--}}
-{{--        //     axios.get('/getVisitorsData')--}}
-{{--        //         .then(function(response) {--}}
-{{--        //--}}
-{{--        //             if (response.status=200){--}}
-{{--        //                 $('#mainDiv').removeClass('d-none');--}}
-{{--        //                 $('#loaderDiv').addClass('d-none');--}}
-{{--        //                 var jsonVisitorData = response.data;--}}
-{{--        //                 $.each(jsonVisitorData, function(i, item) {--}}
-{{--        //                     $('<tr>').html(--}}
-{{--        //--}}
-{{--        //                         "<td> " + jsonVisitorData[i].id + "</td> " +--}}
-{{--        //                         "<td> " + jsonVisitorData[i].ip_address + " </td> " +--}}
-{{--        //                         "<td> " + jsonVisitorData[i].visit_time + " </td> "--}}
-{{--        //--}}
-{{--        //                     ).appendTo('#visitorTable');--}}
-{{--        //                 });--}}
-{{--        //             }else {--}}
-{{--        //                 $('#loaderDiv').addClass('d-none');--}}
-{{--        //                 $('#wrongDiv').removeClass('d-none');--}}
-{{--        //             }--}}
-{{--        //--}}
-{{--        //--}}
-{{--        //         }).catch(function (error) {--}}
-{{--        //         $('#loaderDiv').addClass('d-none');--}}
-{{--        //         $('#wrongDiv').removeClass('d-none');--}}
-{{--        //     });--}}
-{{--        // }--}}
-
-
-
-
-
-{{--    </script>--}}
-
-
-
-{{--@endsection--}}
+@endsection
