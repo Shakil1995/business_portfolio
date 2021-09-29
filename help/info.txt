@@ -2,3 +2,6 @@ Migration:
 artisan make:migration vitorTable
 artisan make:Model VitorModel
 php artisan migrate
+php artisan migrate:rollback
+php artisan migrate:refresh
+php artisan migrate:add

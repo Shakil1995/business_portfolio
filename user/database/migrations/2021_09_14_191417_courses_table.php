@@ -14,6 +14,10 @@ class CoursesTable extends Migration
             $table->bigIncrements('id');
             $table->string('courses_name');
             $table->string('courses_des');
+            $table->string('courses_fee');
+            $table->string('courses_totalenroll');
+            $table->string('courses_totalclass');
+            $table->string('courses_link');
             $table->string('courses_img');
 
         });

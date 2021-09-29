@@ -3,7 +3,7 @@
 @section('content')
 
 
-    <div id="mainDiv" class="container d-none ">
+    <div id="mainDivCourses" class="container d-none ">
         <div class="row">
             <div class="col-md-12 p-5">
                 <table id="" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -11,7 +11,10 @@
                     <tr>
                         <th class="th-sm">Image</th>
                         <th class="th-sm">Name</th>
-                        <th class="th-sm">Description</th>
+                        <th class="th-sm">Free</th>
+                        <th class="th-sm">Class</th>
+                        <th class="th-sm">Enroll</th>
+                        <th class="th-sm">Details</th>
                         <th class="th-sm">Edit</th>
                         <th class="th-sm">Delete</th>
                     </tr>
@@ -25,7 +28,7 @@
     </div>
 
 
-    <div id="loaderDiv" class="container">
+    <div id="loaderDivCourses" class="container">
         <div class="row">
             <div class="col-md-12 text-center p-5">
 
@@ -35,7 +38,7 @@
     </div>
 
 
-    <div id="wrongDiv"  class="container d-none">
+    <div id="wrongDivCourses"  class="container d-none">
         <div class="row">
             <div class="col-md-12 text-center p-5">
 
@@ -97,80 +100,7 @@
 
         getCourseData();
 
-        function getCourseData() {
-axios.get('/getCourseData')
-            .then(function (response) {
-                if(response.status=200){
-                    $('#mainDiv').removeClass('d-none');
-                    $('#loaderDiv').addClass('d-none');
 
-                    let courseData=response.data;
-                    $.each(courseData,function (i,item) {
-                        $('<tr>').html(
-                            "<td> <img class='table-img' src=" + courseData[i].	courses_img + ">  </td>" +
-                            "<th> " + courseData[i].courses_name + "</th> " +
-                            "<th> " + courseData[i].courses_des + " </th> " +
-                            "<td> <a  ><i class='fas fa-edit'></i></a> </td>>" +
-                            "<td> <a class='courseDeleteBtn' data-toggle='modal' data-id="+ courseData[i].id+"  ><i class='fas fa-trash-alt'></i></a> </td>>"
-                ).appendTo('#course_Table');
-                    });
-//service table delete Icon Click
-                    $('.courseDeleteBtn').click(function () {
-                        let id= $(this).data('id');
-                        // $('#serviceDeleteConfirmID').attr('data-id',id);
-                        $('#courserDeleteID').html(id);
-                        $('#deleteModal').modal('show');
-                    })
-
-
-                    //Course Delete modal yes btn
-                    $('#courseDeleteConfirmID').click(function () {
-                        // let id=$(this).data('id');
-                        let id=$('#courserDeleteID').html();
-                        CourseDelete(id);
-                    })
-
-
-                }
-                else {
-                    $('#loaderDiv').addClass('d-none');
-                    $('#wrongDiv').removeClass('d-none');
-
-                }
-
-            })
-            .catch(function (error) {
-                $('#loaderDiv').addClass('d-none');
-                $('#wrongDiv').removeClass('d-none');
-            });
-
-        }
-
-
-
-        //Course Delete
-        function CourseDelete(deleteID) {
-            axios.post('/CourserDelete',{id:deleteID})
-                .then(function (response) {
-
-                    if(response.data==1){
-                        // alert('success');
-                        $('#deleteModal').modal('hide');
-                        toastr.success('Delete Success');
-
-                        getCourseData()
-                    }else {
-                        // alert('fail');
-                        $('#deleteModal').modal('hide');
-                        toastr.error('Delete Fail');
-                        getCourseData()
-                    }
-                })
-                .catch(function (error) {
-
-                });
-
-        }
 
     </script>
 

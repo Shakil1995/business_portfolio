@@ -9,12 +9,13 @@
        @foreach ( $coursesData as $coursesData )
            
   
-        <div class="col-md-3  thumbnail-container ">
+        <div class="col-md-4  thumbnail-container ">
                 <img   src="{{$coursesData->courses_img}}" alt="Avatar" class="thumbnail-image ">
                 <div class="thumbnail-middle">
                     <h1 class="thumbnail-title"> {{$coursesData->courses_name}} </h1>
                     <h1 class="thumbnail-subtitle">{{$coursesData->courses_des}} </h1>
-                    <button class="normal-btn btn">শুরু করুন</button>
+                    <h1 class="thumbnail-subtitle">{{$coursesData->course_fee}} </h1>
+                    <a target="_blank" href="{{$coursesData->course_link}}" class="normal-btn btn">শুরু করুন</a>
                 </div>
         </div>
         @endforeach

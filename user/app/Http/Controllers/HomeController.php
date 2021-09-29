@@ -26,7 +26,10 @@ class HomeController extends Controller
           
       $servicesData= json_decode(ServicesModel::all());
 
-      $coursesData= json_decode(CoursesModel::all());
+      $coursesData= json_decode(CoursesModel::orderBy('id','desc')->limit(6)->get());
+
+
+      
       $projectsData= json_decode(ProjectModel::all());
       $blogsData= json_decode(BlogModel::all());
       $userReviewData= json_decode(user_ReviewModel::all());
