@@ -34,9 +34,11 @@ Route::get('/course','CourseController@CourseIndex');
 Route::get('/getCourseData','CourseController@getCourseData');
 Route::get('/CourserDetails','CourseController@getCourseDetails');
 
-Route::get('/CourserDelete','CourseController@courseDelete');
+Route::get('/CourseDelete','CourseController@courseDelete');
+
+
 Route::get('/CourserUpdate','CourseController@courseUpdate');
-Route::get('/CourserAdd','CourseController@courseAdd');
+Route::get('/CourseAdd','CourseController@courseAdd');
 
 
 

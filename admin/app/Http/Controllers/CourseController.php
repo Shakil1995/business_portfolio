@@ -55,8 +55,7 @@ class CourseController extends Controller
             'course_totalenroll'=>$course_totalenroll,
             'course_totalclass'=>$course_totalclass,
             'course_link'=>$course_link,
-            'courses_img'=>$courses_img
-
+            'courses_img'=>$courses_img,
 
         ]);
         if($result==true){
@@ -64,11 +63,11 @@ class CourseController extends Controller
         }else{
             return  0;
         }
-
     }
 
 
     function  courseAdd(Request $req){
+//        $id= $req->input('id');
         $courses_name= $req->input('courses_name');
         $courses_des= $req->input('courses_des');
         $course_fee= $req->input('course_fee');
@@ -78,22 +77,19 @@ class CourseController extends Controller
         $courses_img= $req->input('	courses_img');
 
         $result= CoursesModel::insert([
-
             'courses_name'=>$courses_name,
             'courses_des'=>$courses_des,
             '$course_fee'=>$course_fee,
             'course_totalenroll'=>$course_totalenroll,
             'course_totalclass'=>$course_totalclass,
             'course_link'=>$course_link,
-            'courses_img'=>$courses_img
-
+            'courses_img'=>$courses_img,
         ]);
         if($result==true){
             return  1;
         }else{
             return  0;
         }
-
     }
 
 
