@@ -1,0 +1,152 @@
+Countrolller :
+
+    function  addCourse(Request $req){
+//        $id= $req->input('id');
+        $courses_name= $req->input('courses_name');
+        $courses_des= $req->input('courses_des');
+        $course_fee= $req->input('course_fee');
+        $course_totalenroll= $req->input('course_totalenroll');
+        $course_totalclass= $req->input('course_totalclass');
+        $course_link= $req->input('	course_link');
+        $courses_img= $req->input('	courses_img');
+
+        $result= CoursesModel::insert([
+            'courses_name'=>$courses_name,
+            'courses_des'=>$courses_des,
+            '$course_fee'=>$course_fee,
+            'course_totalenroll'=>$course_totalenroll,
+            'course_totalclass'=>$course_totalclass,
+            'course_link'=>$course_link,
+            'courses_img'=>$courses_img,
+        ]);
+        if($result==true){
+            return  1;
+        }else{
+            return  0;
+        }
+    }
+
+course add js file
+
+
+
+//Course Add table  Icon Click
+$('#addNewCourseBtnID').click(function () {
+
+    $('#addCourseModal').modal('show');
+})
+
+//Course Add modal yes btn
+
+$('#CourseAddConfirmBtn').click(function () {
+
+     var courseName=$('#CourseNameId').val();
+    var courseDes=$('#CourseDesId').val();
+    var courseFee=$('#CourseFeeId').val();
+    var courseEnroll=$('#CourseEnrollId').val();
+    var courseClass=$('#CourseClassId').val();
+    var courseLink=$('#CourseLinkId').val();
+    var courseImg=$('#CourseImgId').val();
+
+    CourseAdd(courseName,courseDes,courseFee,courseEnroll,courseClass,courseLink,courseImg)
+})
+
+
+//Each Course Add Details
+function CourseAdd(courseName,courseDes,courseFee,courseEnroll,courseTotalClass,courseLink,courseImg) {
+
+    if(courseName.length==0) {
+        toastr.error('Course Name is Empty !');
+    }else if (courseDes.length==0){
+        toastr.error('Course Description is Empty !');
+    }else if (courseFee.length==0){
+        toastr.error('Course Fee is Empty !');
+    }else if (courseEnroll.length==0){
+        toastr.error('Course Enroll is Empty !');
+    }else if (courseTotalClass.length==0){
+        toastr.error('Course Total Class is Empty !');
+    }else if (courseLink.length==0){
+        toastr.error('Course Link is Empty !');
+    }else if (courseImg.length==0){
+        toastr.error('Course Images is Empty !');
+    }
+    else {
+        $('#CourseAddConfirmBtn').html("  <div class='spinner-border spinner-border-sm' role='status' ></div> ");
+        axios.post('/addCourses',{
+            courses_name:courseName,
+            courses_des:courseDes,
+            course_fee:courseFee,
+            course_totalenroll:courseEnroll,
+            course_totalclass:courseTotalClass,
+            course_link:courseLink,
+            courses_img:courseImg
+        })
+            .then(function (response) {
+                $('#CourseAddConfirmBtn').html("Save");
+                if (response.status==200){
+                    if(response.data==1){
+                        $('#addCourseModal').modal('hide');
+                        toastr.success('Course Add Success');
+                           getCourseData()
+                    }else {
+                        $('#addCourseModal').modal('hide');
+                        toastr.error('Course Add Fail');
+                        getCourseData()
+                    }
+                }
+                else {
+                    $('#addCourseModal').modal('hide');
+                    toastr.error('Something Went Wrong  !');
+                }
+            })
+            .catch(function (error) {
+                $('#addCourseModal').modal('hide');
+                toastr.error('Something Went Wrong  !');
+            });
+    }
+
+}
+
+
+
+blade File :
+
+    {{--    Add course modal--}}
+
+
+    <div class="modal fade" id="addCourseModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New  Course</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body  text-center">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input id="CourseNameId" type="text" id="" class="form-control mb-3" placeholder="Course Name">
+                                <input id="CourseDesId" type="text" id="" class="form-control mb-3" placeholder="Course Description">
+                                <input id="CourseFeeId" type="text" id="" class="form-control mb-3" placeholder="Course Fee">
+                                <input id="CourseEnrollId" type="text" id="" class="form-control mb-3" placeholder="Total Enroll">
+                            </div>
+                            <div class="col-md-6">
+                                <input id="CourseClassId" type="text" id="" class="form-control mb-3" placeholder="Total Class">
+                                <input id="CourseLinkId" type="text" id="" class="form-control mb-3" placeholder="Course Link">
+                                <input id="CourseImgId" type="text" id="" class="form-control mb-3" placeholder="Course Image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Cancel</button>
+                    <button  id="CourseAddConfirmBtn" type="button" class="btn  btn-sm  btn-danger">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
