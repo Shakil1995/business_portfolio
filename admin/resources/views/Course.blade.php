@@ -99,7 +99,7 @@
                     </button>
                 </div>
                 <div class="modal-body  text-center">
-                    <div class="container">
+                    <div id="courseEditForm" class="container d-none">
                         <div class="row">
                             <div class="col-md-6">
                                 <input id="CourseNameId" type="text" id="" class="form-control mb-3" placeholder="Course Name">
@@ -114,6 +114,9 @@
                             </div>
                         </div>
                     </div>
+
+                    <img id="CourseEditLoader" class="loading-icon m-5" src="{{asset('images/loder.svg')}}">
+                    <h1 id="CourseEditWrong" class="d-none" >Something went wrong</h1>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Cancel</button>

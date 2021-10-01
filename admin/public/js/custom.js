@@ -30,8 +30,7 @@ function getCourseData() {
 //Course table update Icon Click
                 $('.courseUpdateBtn').click(function () {
                     let id= $(this).data('id');
-                    // $('#serviceDeleteConfirmID').attr('data-id',id);
-                    // $('#courserDeleteID').html(id);
+                    CourseUpdateDetails(id)
                     $('#updateCourseModal').modal('show');
                 })
 
@@ -169,4 +168,40 @@ function CourseAdd(CourseName,CourseDes,CourseFee,CourseEnroll,CourseClass,Cours
             });
     }
 
+}
+
+
+
+
+
+// Course Update
+
+
+//Each Services Update Details
+
+function CourseUpdateDetails(detailsID) {
+    axios.post('/CourserDetails',{
+        id:detailsID
+    })
+        .then(function (response) {
+
+
+            if(response.status==200){
+                $('#courseEditForm').removeClass('d-none');
+                $('#CourseEditLoader').addClass('d-none');
+                var jsonData=response.data;
+                $('#serviceNameId').val(jsonData[0].service_name);
+                $('#serviceDesId').val(jsonData[0].	service_des);
+                $('#serviceImgId').val(jsonData[0].service_img);
+            }
+            else {
+                $('#CourseEditLoader').addClass('d-none');
+                $('#CourseEditWrong').removeClass('d-none');
+            }
+        })
+        .catch(function (error) {
+            $('#CourseEditLoader').addClass('d-none');
+            $('#CourseEditWrong').removeClass('d-none');
+
+        });
 }
