@@ -7,7 +7,7 @@
             <div class="col-md-12 p-5">
                 <button  id="addNewBtnID" class="  btn btn-sm my-3 btn-danger" >Add New </button>
 
-                <table id="" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <table id="serviceDataTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
                      <tr>
                         <th class="th-sm">Image</th>
@@ -201,7 +201,12 @@ function getServicesAllData() {
                     ServiceUpdateDetails(id)
                     $('#editModal').modal('show');
                 })
-            }else
+
+$('#serviceDataTable').dataTable();
+
+            }
+
+            else
             {
                 $('#loaderDiv').addClass('d-none');
                 $('#wrongDiv').removeClass('d-none');
@@ -250,7 +255,7 @@ function ServiceDelete(deleteID) {
 
 //Each Services Update Details
 function ServiceUpdateDetails(detailsID) {
-    axios.post('/ServicesDetail',{
+    axios.post('/CourserDetails',{
         id:detailsID
     })
         .then(function (response) {
@@ -259,7 +264,7 @@ function ServiceUpdateDetails(detailsID) {
                        $('#serviceEditLoader').addClass('d-none');
                        var jsonData=response.data;
                        $('#serviceNameId').val(jsonData[0].service_name);
-                       $('#serviceDesId').val(jsonData[0].	service_des);
+                       $('#serviceDesId').val(jsonData[0].service_des);
                        $('#serviceImgId').val(jsonData[0].service_img);
                    }
                    else {

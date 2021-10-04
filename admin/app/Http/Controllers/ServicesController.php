@@ -16,6 +16,7 @@ class ServicesController extends Controller
        $result =json_decode(ServicesModel::all());
         return $result;
     }
+    
     function  getServicesDetails (Request $req){
         $id= $req->input('id');
         $result =json_decode(ServicesModel::where('id','=',$id)->get());

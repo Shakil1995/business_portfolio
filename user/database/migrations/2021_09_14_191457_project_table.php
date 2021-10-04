@@ -14,6 +14,7 @@ class ProjectTable extends Migration
             $table->bigIncrements('id');
             $table->string('project_name');
             $table->string('project_des');
+            $table->string('project_Link');
             $table->string('project_img');
 
         });

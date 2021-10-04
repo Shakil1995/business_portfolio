@@ -32,32 +32,34 @@ Route::post('/ServicesAdd','ServicesController@serviceAdd');
 //Course Route
 Route::get('/course','CourseController@CourseIndex');
 Route::get('/getCourseData','CourseController@getCourseData');
-Route::get('/CourserDetails','CourseController@getCourseDetails');
-
-Route::get('/CourseDelete','CourseController@courseDelete');
-
-
-Route::get('/CourserUpdate','CourseController@courseUpdate');
-Route::get('/CourseAdd','CourseController@courseAdd');
+Route::post('/CourserDetails','CourseController@getCoursesDetails');
+Route::post('/CourseDelete','CourseController@courseDelete');
+Route::post('/CourserUpdate','CourseController@courseUpdate');
+Route::post('/CourseAdd','CourseController@courseAdd');
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//project Route
+//Project Route
 Route::get('/project','ProjectController@ProjectIndex');
 Route::get('/getProjectData','ProjectController@getProjectData');
-Route::get('/C','ProjectController@serviceDelete');
+
+Route::post('/ProjectDetail','ProjectController@getProjectDetails');
+
+
+
+Route::post('/ProjectDelete','ProjectController@projectDelete');
+Route::post('/ProjectUpdate','ProjectController@projectUpdate');
+Route::post('/ProjectAdd','ProjectController@projectAdd');
+
+
+
+
+
+
+
+
+
+
+
+

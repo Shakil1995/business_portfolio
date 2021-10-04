@@ -1,169 +1,150 @@
+function getProjectAllData() {
 
-function getCourseData() {
-    axios.get('/getCourseData')
-        .then(function (response) {
-            if(response.status=200){
-                $('#mainDivCourses').removeClass('d-none');
-                $('#loaderDivCourses').addClass('d-none');
+    axios.get('/getProjectData')
+        .then(function(response) {
+            if (response.status = 200) {
+                $('#mainDiv').removeClass('d-none');
+                $('#loaderDiv').addClass('d-none');
+                $('#projectTable').empty();
 
-                let courseData=response.data;
-                $.each(courseData,function (i,item) {
+                var projectData = response.data;
+                $.each(projectData, function(i, item) {
                     $('<tr>').html(
-                        "<td> <img class='table-img' src=" + courseData[i].	courses_img + ">  </td>" +
-                        "<th> " + courseData[i].courses_name + "</th> " +
-                        "<th> " + courseData[i].course_fee + " </th> " +
-                        "<th> " + courseData[i].course_totalclass + " </th> " +
-                        "<th> " + courseData[i].course_totalenroll	 + " </th> " +
-                        "<td> <a  ><i class='fas fa-eye'></i></a> </td>>" +
-                        "<td> <a class='courseUpdateBtn' ><i class='fas fa-edit'></i></a> </td>>" +
-                        "<td> <a class='courseDeleteBtn' data-toggle='modal' data-id="+ courseData[i].id+"  ><i class='fas fa-trash-alt'></i></a> </td>>"
-                    ).appendTo('#course_Table');
+                        "<td> <img class='table-img' src=" + projectData[i].project_img + ">  </td>" +
+                        "<th> " + projectData[i].project_name + "</th> " +
+                        "<th> " + projectData[i].project_des + " </th> " +
+                        "<th> " + projectData[i].project_Link + " </th> " +
+                        "<td> <a class='projectUpdateBtn' data-id=" + projectData[i].id + "  ><i class='fas fa-edit'></i></a> </td>>" +
+                        "<td> <a  class='projectDeleteBtn' data-toggle='modal' data-id=" + projectData[i].id + "  ><i class='fas fa-trash-alt'></i></a> </td>>"
+                    ).appendTo('#projectTable');
                 });
-
-//Course table delete Icon Click
-                $('.courseDeleteBtn').click(function () {
-                    let id= $(this).data('id');
-                    // $('#serviceDeleteConfirmID').attr('data-id',id);
-                    $('#courserDeleteID').html(id);
-                    $('#deleteCourseModal').modal('show');
-                })
-//Course table update Icon Click
-                $('.courseUpdateBtn').click(function () {
-                    let id= $(this).data('id');
-                    CourseUpdateDetails(id)
-                    $('#updateCourseModal').modal('show');
+                //Project table delete Icon Click
+                $('.projectDeleteBtn').click(function() {
+                    let id = $(this).data('id');
+                    // $('#ProjectDeleteConfirmID').attr('data-id',id);
+                    $('#projectDeleteID').html(id);
+                    $('#projectModal').modal('show');
                 })
 
-            }
-            else {
-                $('#loaderDivCourses').addClass('d-none');
-                $('#wrongDivCourses').removeClass('d-none');
 
-            }
+                //Project table Update Icon Click
+                $('.projectUpdateBtn').click(function() {
+                    let id = $(this).data('id');
+                    ProjectUpdateDetails(id)
+                    $('#projectUpdateID').html(id);
 
+                    $('#projectUpdateModal').modal('show');
+                })
+
+
+                //Project table Add Icon Click
+                $('#addNewProjectBtnID').click(function() {
+                    let id = $(this).data('id');
+                    $('#projectDeleteID').html(id);
+                    $('#projectAddModal').modal('show');
+                })
+
+
+            } else {
+                $('#loaderDiv').addClass('d-none');
+                $('#wrongDiv').removeClass('d-none');
+            }
         })
-        .catch(function (error) {
-            $('#loaderDivCourses').addClass('d-none');
-            $('#wrongDivCourses').removeClass('d-none');
+        .catch(function(error) {
+            $('#loaderDiv').addClass('d-none');
+            $('#wrongDiv').removeClass('d-none');
         });
-
 }
 
 
-//Course Delete Confirm yes Btn
 
-$('#courseDeleteConfirmBtnID').click(function () {
-var id=$('#courserDeleteID').html();
-    courseDelete(id);
-})
-
-
-//Course Delete
-function courseDelete(deleteID) {
-    $('#courseDeleteConfirmBtnID').html("  <div class='spinner-border spinner-border-sm' role='status' ></div> ");
-    axios.post('/CourseDelete',{
-        id:deleteID
+//service Delete modal yes btn
+$('#projectDeleteConfirmID').click(function() {
+        // let id=$(this).data('id');
+        let id = $('#projectDeleteID').html();
+        projectDelete(id)
     })
-        .then(function (response) {
-            $('#courseDeleteConfirmBtnID').html("yes");
-            if (response.status==200){
-                if(response.data==1){
-                    $('#deleteCourseModal').modal('hide');
+    // Service Delete
+function projectDelete(deleteID) {
+    $('#projectDeleteConfirmID').html("  <div class='spinner-border spinner-border-sm' role='status' ></div> ");
+    axios.post('/ProjectDelete', { id: deleteID })
+        .then(function(response) {
+            $('#projectDeleteConfirmID').html("yes");
+            if (response.status == 200) {
+                if (response.data == 1) {
+                    $('#projectModal').modal('hide');
                     toastr.success('Delete Success');
 
-                    getCourseData()
-                }else {
-                    $('#deleteCourseModal').modal('hide');
+                    getProjectAllData()
+                } else {
+                    $('#projectModal').modal('hide');
                     toastr.error('Delete Fail');
-                    getCourseData()
+                    getProjectAllData()
                 }
-
-            }else {
-                $('#deleteCourseModal').modal('hide');
+            } else {
+                $('#projectModal').modal('hide');
                 toastr.error('Something Went Wrong  !');
             }
         })
-        .catch(function (error) {
-            $('#deleteCourseModal').modal('hide');
+        .catch(function(error) {
+            $('#projectModal').modal('hide');
             toastr.error('Something Went Wrong  !');
         });
 }
 
 
-//Course Add Confirm yes Btn
-
-$('#addNewCourseBtnID').click(function () {
-    $('#addCourseModal').modal('show');
-
-});
 
 
-//Course Add
 
-$('#CourseAddConfirmBtn').click(function () {
-
-   var CourseName=  $('#CourseNameId').val();
-    var CourseDes=    $('#CourseDesId').val();
-    var CourseFee=   $('#CourseFeeId').val();
-    var CourseEnroll=   $('#CourseEnrollId').val();
-    var CourseClass=   $('#CourseClassId').val();
-    var CourseLink=   $('#CourseLinkId').val();
-    var CourseImg=   $('#CourseImgId').val();
-
-    CourseAdd(CourseName,CourseDes,CourseFee,CourseEnroll,CourseClass,CourseLink,CourseImg)
-
-
+//Project modal yes btn
+$('#projectAddConfirmID').click(function() {
+    let projectNameAdd = $('#projectNameAddId').val();
+    let projectDesAdd = $('#projectDesAddId').val();
+    let projectLinkAdd = $('#projectLinkAddId').val();
+    let projectImgAdd = $('#projectImgAddId').val();
+    projectAdd(projectNameAdd, projectDesAdd, projectLinkAdd, projectImgAdd);
 })
 
-//Each Services Add Details
-function CourseAdd(CourseName,CourseDes,CourseFee,CourseEnroll,CourseClass,CourseLink,CourseImg) {
-    if(CourseName.length==0) {
-        toastr.error('Course Name is Empty !');
-    }else if (CourseDes.length==0){
-        toastr.error('Course Description is Empty !');
-    }else if (CourseFee.length==0){
-        toastr.error('Course Fee is Empty !');
-    }else if (CourseEnroll.length==0){
-        toastr.error('Course Enroll is Empty !');
-    }else if (CourseClass.length==0){
-        toastr.error('Course Class is Empty !');
-    }else if (CourseLink.length==0){
-        toastr.error('Course Link is Empty !');
-    }else if (CourseImg.length==0){
-        toastr.error('Course Img is Empty !');
-    }
 
-    else {
-        $('#CourseAddConfirmBtn').html("  <div class='spinner-border spinner-border-sm' role='status' ></div> ");
-        axios.post('/CourseAdd',{
-            courses_name:courseName,
-            courses_des:courseDes,
-            course_fee:courseFee,
-            course_totalenroll:courseEnroll,
-            course_totalclass:courseClass,
-            course_link:courseLink,
-            courses_img:courseImg,
-        })
-            .then(function (response) {
-                $('#CourseAddConfirmBtn').html("Save");
-                if (response.status==200){
-                    if(response.data==1){
-                        $('#addCourseModal').modal('hide');
-                        toastr.success('Courses Add Success');
-                        getCourseData()
-                    }else {
-                        $('#addCourseModal').modal('hide');
-                        toastr.error('Service Add Fail');
-                        getCourseData()
+
+//Each Project Add Details
+function projectAdd(projectName, projectDes, projectLink, projectImg) {
+    if (projectName.length == 0) {
+        toastr.error('project Name is Empty !');
+    } else if (projectDes.length == 0) {
+        toastr.error('project Description is Empty !');
+    } else if (projectLink.length == 0) {
+        toastr.error('project Link is Empty !');
+    } else if (projectImg.length == 0) {
+        toastr.error('Project Images is Empty !');
+    } else {
+        $('#projectAddConfirmID').html("  <div class='spinner-border spinner-border-sm' role='status' ></div> ");
+        axios.post('/ProjectAdd', {
+                project_name: projectName,
+                project_des: projectDes,
+                project_Link: projectLink,
+                project_img: projectImg,
+            })
+            .then(function(response) {
+                $('#projectAddConfirmID').html("Save");
+                if (response.status == 200) {
+                    if (response.data == 1) {
+                        $('#projectAddModal').modal('hide');
+                        toastr.success('Project Add Success');
+
+                        getProjectAllData()
+                    } else {
+                        $('#projectAddModal').modal('hide');
+                        toastr.error('Project Add Fail');
+                        getProjectAllData()
                     }
-                }
-                else {
-                    $('#addCourseModal').modal('hide');
+                } else {
+                    $('#projectAddModal').modal('hide');
                     toastr.error('Something Went Wrong  !');
                 }
             })
-            .catch(function (error) {
-                $('#addCourseModal').modal('hide');
+            .catch(function(error) {
+                $('#projectAddModal').modal('hide');
                 toastr.error('Something Went Wrong  !');
             });
     }
@@ -171,37 +152,87 @@ function CourseAdd(CourseName,CourseDes,CourseFee,CourseEnroll,CourseClass,Cours
 }
 
 
+//Each Project Update Details
+function ProjectUpdateDetails(detailsID) {
+    axios.post('/ProjectDetail', {
+            id: detailsID
+        })
+        .then(function(response) {
+            if (response.status == 200) {
+                $('#projectUpdateForm').removeClass('d-none');
+                $('#projectUpdateLoader').addClass('d-none');
+                var jsonData = response.data;
+                $('#projectUpdateNameId').val(jsonData[0].project_name);
+                $('#projectUpdateDesId').val(jsonData[0].project_des);
+                $('#projectUpdateLinkId').val(jsonData[0].project_Link);
+                $('#projectUpdateImgId').val(jsonData[0].project_img);
 
-
-
-// Course Update
-
-
-//Each Services Update Details
-
-function CourseUpdateDetails(detailsID) {
-    axios.post('/CourserDetails',{
-        id:detailsID
-    })
-        .then(function (response) {
-
-
-            if(response.status==200){
-                $('#courseEditForm').removeClass('d-none');
-                $('#CourseEditLoader').addClass('d-none');
-                var jsonData=response.data;
-                $('#serviceNameId').val(jsonData[0].service_name);
-                $('#serviceDesId').val(jsonData[0].	service_des);
-                $('#serviceImgId').val(jsonData[0].service_img);
-            }
-            else {
-                $('#CourseEditLoader').addClass('d-none');
-                $('#CourseEditWrong').removeClass('d-none');
+            } else {
+                $('#projectUpdateLoader').addClass('d-none');
+                $('#projectUpdateWrong').removeClass('d-none');
             }
         })
-        .catch(function (error) {
-            $('#CourseEditLoader').addClass('d-none');
-            $('#CourseEditWrong').removeClass('d-none');
+        .catch(function(error) {
+            $('#projectUpdateLoader').addClass('d-none');
+            $('#projectUpdateWrong').removeClass('d-none');
 
         });
+}
+
+
+
+//Project update  modal yes btn
+$('#projectUpdateConfirmID').click(function() {
+    let id = $('#projectUpdateID').html();
+    let ProjectUpdateName = $('#projectUpdateDesId').val();
+    let ProjectUpdateDes = $('#projectUpdateDesId').val();
+    let ProjectUpdateLink = $('#projectUpdateLinkId').val();
+    let ProjectUpdateImg = $('#projectUpdateImgId').val();
+    ProjectUpdate(id, ProjectUpdateName, ProjectUpdateDes, ProjectUpdateLink, ProjectUpdateImg);
+})
+
+
+
+//Each Project Update Details
+function ProjectUpdate(projectUpdateID, projectUpdateName, projectUpdateDes, projectUpdateLink, projectUpdateImg) {
+    if (projectUpdateName.length == 0) {
+        toastr.error('project Name is Empty !');
+    } else if (projectUpdateDes.length == 0) {
+        toastr.error('Project Description is Empty !');
+    } else if (projectUpdateLink.length == 0) {
+        toastr.error('Project Link is Empty !');
+    } else if (projectUpdateImg.length == 0) {
+        toastr.error('Project Images is Empty !');
+    } else {
+        $('#projectUpdateConfirmID').html("  <div class='spinner-border spinner-border-sm' role='status' ></div> ");
+        axios.post('/ProjectUpdate', {
+                id: projectUpdateID,
+                project_name: projectUpdateName,
+                project_des: projectUpdateDes,
+                project_Link: projectUpdateLink,
+                project_img: projectUpdateImg
+            })
+            .then(function(response) {
+                $('#projectUpdateConfirmID').html("yes");
+                if (response.status == 200) {
+                    if (response.data == 1) {
+                        $('#projectUpdateModal').modal('hide');
+                        toastr.success('Update Success');
+
+                        getProjectAllData()
+                    } else {
+                        $('#projectUpdateModal').modal('hide');
+                        toastr.error('Update Fail');
+                        getProjectAllData()
+                    }
+                } else {
+                    $('#projectUpdateModal').modal('hide');
+                    toastr.error('Something Went Wrong  !');
+                }
+            })
+            .catch(function(error) {
+                $('#projectUpdateModal').modal('hide');
+                toastr.error('Something Went Wrong  !');
+            });
+    }
 }
