@@ -198,7 +198,7 @@ function getServicesAllData() {
                 $('.servicesEditBtn').click(function () {
                     let id= $(this).data('id');
                     $('#serviceEditID').html(id);
-                    ServiceUpdateDetails(id)
+                    ServiceUpdateDetails(id);
                     $('#editModal').modal('show');
                 })
 

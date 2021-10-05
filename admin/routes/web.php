@@ -32,7 +32,9 @@ Route::post('/ServicesAdd','ServicesController@serviceAdd');
 //Course Route
 Route::get('/course','CourseController@CourseIndex');
 Route::get('/getCourseData','CourseController@getCourseData');
+
 Route::post('/CourserDetails','CourseController@getCoursesDetails');
+
 Route::post('/CourseDelete','CourseController@courseDelete');
 Route::post('/CourserUpdate','CourseController@courseUpdate');
 Route::post('/CourseAdd','CourseController@courseAdd');

@@ -32,7 +32,6 @@ function getProjectAllData() {
                     let id = $(this).data('id');
                     ProjectUpdateDetails(id)
                     $('#projectUpdateID').html(id);
-
                     $('#projectUpdateModal').modal('show');
                 })
 

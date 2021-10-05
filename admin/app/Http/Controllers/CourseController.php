@@ -18,18 +18,13 @@ class CourseController extends Controller
     }
 
 
-    // function  getCourseDetails (Request $req){
-    //     $id= $req->input('id');
-    //     $result =json_decode(CoursesModel::where('id','=',$id)->get());
-    //     return $result;
-    // }
 
-   
     function  getCoursesDetails (Request $req){
         $id= $req->input('id');
         $result =json_decode(CoursesModel::where('id','=',$id)->get());
         return $result;
     }
+
 
     function  courseDelete(Request $req){
         $id= $req->input('id');
