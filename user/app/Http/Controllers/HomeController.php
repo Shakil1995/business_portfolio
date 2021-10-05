@@ -23,13 +23,13 @@ class HomeController extends Controller
        VisitorModel::insert([ 'ip_address'=>$userIP,'visit_time'=> $timeDate]);
 
 
-          
+
       $servicesData= json_decode(ServicesModel::all());
 
       $coursesData= json_decode(CoursesModel::orderBy('id','desc')->limit(6)->get());
 
 
-      
+
       $projectsData= json_decode(ProjectModel::all());
       $blogsData= json_decode(BlogModel::all());
       $userReviewData= json_decode(user_ReviewModel::all());
@@ -41,5 +41,30 @@ class HomeController extends Controller
             "blogsData"=>$blogsData,
             "userReviewData"=>$userReviewData,
             ]);
+    }
+
+
+    function ContactSend(Request $request)
+    {
+        $contact_name = $request->input('contact_name');
+        $contact_phone = $request->input('contact_phone');
+        $contact_email = $request->input('contact_email');
+        $contact_meg = $request->input('contact_meg');
+
+
+      $result=  ContactModel::insert([
+             'contact_name'=>$contact_name,
+            'contact_phone'=>$contact_phone,
+            'contact_email'=>$contact_email,
+            'contact_meg'=>$contact_meg
+
+        ]);
+
+      if($result==true){
+          return 1;
+      }else{
+          return  0;
+      }
+
     }
 }

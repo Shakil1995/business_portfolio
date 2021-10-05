@@ -5,29 +5,29 @@
 
  <div class="row">
 
-     
+
        @foreach ( $coursesData as $coursesData )
-           
-  
+
+
         <div class="col-md-4  thumbnail-container ">
                 <img   src="{{$coursesData->courses_img}}" alt="Avatar" class="thumbnail-image ">
                 <div class="thumbnail-middle">
                     <h1 class="thumbnail-title"> {{$coursesData->courses_name}} </h1>
                     <h1 class="thumbnail-subtitle">{{$coursesData->courses_des}} </h1>
-                    <h1 class="thumbnail-subtitle">{{$coursesData->course_fee}} </h1>
-                    <a target="_blank" href="{{$coursesData->course_link}}" class="normal-btn btn">শুরু করুন</a>
+                    <h1 class="thumbnail-subtitle">{{$coursesData->courses_fee}} </h1>
+                    <a target="_blank" href="{{$coursesData->courses_link}}" class="normal-btn btn">শুরু করুন</a>
                 </div>
         </div>
         @endforeach
-      
-        
-    </div> 
+
+
+    </div>
 
     {{-- <div id="one"  class="owl-carousel mb-4 owl-theme">
         @foreach ( $coursesData as $coursesData )
-            
-        
-                  
+
+
+
                         <div class="item m-1 card">
                             <div class="text-center">
                                 <img class="w-100 h-100" src="{{$coursesData->courses_img}}" alt="Card image cap">
@@ -36,8 +36,8 @@
                                 <button class="normal-btn-outline mt-2 mb-4 btn">বিস্তারিত</button>
                             </div>
                         </div>
-                        @endforeach    
-                      
+                        @endforeach
+
                     </div> --}}
 
 

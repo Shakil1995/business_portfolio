@@ -7,18 +7,18 @@
         <div class="col-md-4 contact-form">
                 <h5 class="service-card-title">যোগাযোগ করুন </h5>
                 <div class="form-group ">
-                    <input type="text" class="form-control w-100" placeholder="আপনার নাম">
+                    <input id="contactNameID" type="text" class="form-control w-100" placeholder="আপনার নাম">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control  w-100" placeholder="মোবাইল নং ">
+                    <input id="contactMobileID" type="text" class="form-control  w-100" placeholder="মোবাইল নং ">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control  w-100" placeholder="ইমেইল ">
+                    <input id="contactEmailID" type="text" class="form-control  w-100" placeholder="ইমেইল ">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control  w-100" placeholder="মেসেজ ">
+                    <input id="contactMegID" type="text" class="form-control  w-100" placeholder="মেসেজ ">
                 </div>
-                <button type="submit" class="btn btn-block normal-btn w-100">পাঠিয়ে দিন </button>
+                <button id="contactSendBtnID" class="btn btn-block normal-btn w-100">পাঠিয়ে দিন </button>
         </div>
         <div class="col-md-2">
 
