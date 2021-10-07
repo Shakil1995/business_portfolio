@@ -13,52 +13,54 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/','HomeController@HomeIndex');
 
-Route::get('/visitor','VisitorController@VisitorIndex');
+
+Route::get('/','HomeController@HomeIndex')->middleware('loginCheck');
+
+Route::get('/visitor','VisitorController@VisitorIndex')->middleware('loginCheck');
 //Route::get('/getVisitorsData','VisitorController@getVisitorData');
 
-Route::get('/service','ServicesController@ServicesIndex');
-Route::get('/getServicesData','ServicesController@getServicesData');
-Route::post('/ServicesDelete','ServicesController@serviceDelete');
-Route::post('/ServicesDetail','ServicesController@getServicesDetails');
-Route::post('/ServicesUpdate','ServicesController@serviceUpdate');
-Route::post('/ServicesAdd','ServicesController@serviceAdd');
+Route::get('/service','ServicesController@ServicesIndex')->middleware('loginCheck');
+Route::get('/getServicesData','ServicesController@getServicesData')->middleware('loginCheck');
+Route::post('/ServicesDelete','ServicesController@serviceDelete')->middleware('loginCheck');
+Route::post('/ServicesDetail','ServicesController@getServicesDetails')->middleware('loginCheck');
+Route::post('/ServicesUpdate','ServicesController@serviceUpdate')->middleware('loginCheck');
+Route::post('/ServicesAdd','ServicesController@serviceAdd')->middleware('loginCheck');
 
 
 
 
 
 //Course Route
-Route::get('/course','CourseController@CourseIndex');
-Route::get('/getCourseData','CourseController@getCourseData');
-
-Route::post('/CourserDetails','CourseController@getCoursesDetails');
-
-Route::post('/CourseDelete','CourseController@courseDelete');
-Route::post('/CourserUpdate','CourseController@courseUpdate');
-Route::post('/CourseAdd','CourseController@courseAdd');
+Route::get('/course','CourseController@CourseIndex')->middleware('loginCheck');
+Route::get('/getCourseData','CourseController@getCourseData')->middleware('loginCheck');
+Route::post('/CourserDetails','CourseController@getCoursesDetails')->middleware('loginCheck');
+Route::post('/CourseDelete','CourseController@courseDelete')->middleware('loginCheck');
+Route::post('/CourserUpdate','CourseController@courseUpdate')->middleware('loginCheck');
+Route::post('/CourseAdd','CourseController@courseAdd')->middleware('loginCheck');
 
 
 
 
 //Project Route
-Route::get('/project','ProjectController@ProjectIndex');
-Route::get('/getProjectData','ProjectController@getProjectData');
+Route::get('/project','ProjectController@ProjectIndex')->middleware('loginCheck');
+Route::get('/getProjectData','ProjectController@getProjectData')->middleware('loginCheck');
 
-Route::post('/ProjectDetail','ProjectController@getProjectDetails');
-
-
-
-Route::post('/ProjectDelete','ProjectController@projectDelete');
-Route::post('/ProjectUpdate','ProjectController@projectUpdate');
-Route::post('/ProjectAdd','ProjectController@projectAdd');
+Route::post('/ProjectDetail','ProjectController@getProjectDetails')->middleware('loginCheck');
 
 
+
+Route::post('/ProjectDelete','ProjectController@projectDelete')->middleware('loginCheck');
+Route::post('/ProjectUpdate','ProjectController@projectUpdate')->middleware('loginCheck');
+Route::post('/ProjectAdd','ProjectController@projectAdd')->middleware('loginCheck');
 
 
 
 
+
+Route::get('/Login','LoginController@LoginIndex');
+Route::post('/onLogin','LoginController@OnLogin');
+Route::get('/Logout','LoginController@onLogOut');
 
 
 

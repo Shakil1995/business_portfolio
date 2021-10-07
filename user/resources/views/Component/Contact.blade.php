@@ -4,7 +4,10 @@
             <h5 class="help-line-title"> <i class="fas icon-custom-color fa-headphones-alt"></i> হেলপ লাইন </h5>
             <h5 class="help-line-title m-0">  ০১৭৭৪৬৮৮১৫৯ </h5>
         </div>
+
         <div class="col-md-4 contact-form">
+        <form action="/sendEmail" method="POST">
+       
                 <h5 class="service-card-title">যোগাযোগ করুন </h5>
                 <div class="form-group ">
                     <input id="contactNameID" type="text" class="form-control w-100" placeholder="আপনার নাম">
@@ -18,10 +21,9 @@
                 <div class="form-group">
                     <input id="contactMegID" type="text" class="form-control  w-100" placeholder="মেসেজ ">
                 </div>
-                <button id="contactSendBtnID" class="btn btn-block normal-btn w-100">পাঠিয়ে দিন </button>
-        </div>
-        <div class="col-md-2">
-
-        </div>
+                <button type="submit" id="contactSendBtnID" class="btn btn-block normal-btn w-100">পাঠিয়ে দিন </button>
+      
+    </form>
+</div>
     </div>
 </div>

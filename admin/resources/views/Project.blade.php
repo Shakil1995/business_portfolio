@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-12 p-5">
                 <button  id="addNewProjectBtnID" class="  btn btn-sm my-3 btn-danger" >Add New </button>
-                <table id="" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <table  id="projectDataTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
                     <tr>
                         <th class="th-sm">Image</th>

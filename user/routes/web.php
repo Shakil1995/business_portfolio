@@ -17,4 +17,11 @@ Route::get('/', 'HomeController@HomeIndex');
 
 Route::post('/contactSend', 'HomeController@ContactSend');
 
+Route::get('/sendEmail', [App\Http\Controllers\EmailSendController::class, 'create']);
+Route::post('/sendEmail',  [App\Http\Controllers\EmailSendController::class, 'sendMail']);
+
+
+// Route::get('/sendEmail', [App\Http\Controllers\EmailSendController::class, 'create']);
+// Route::post('/sendEmail',  [App\Http\Controllers\EmailSendController::class, 'sendMail']);
+
 

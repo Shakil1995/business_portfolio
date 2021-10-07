@@ -10,3 +10,4 @@ artisan make:model ResellQR -r -m
 
  php artisan route:list  
  php artisan optimize  
+

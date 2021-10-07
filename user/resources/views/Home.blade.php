@@ -12,6 +12,8 @@
 @include('Component.Contact')
 @include('Component.Blog')
 @include('Component.user_Review')
+
+{{-- @include('Component.userForm') --}}
 @include('Component.footer')
 
 

@@ -202,7 +202,8 @@ function getServicesAllData() {
                     $('#editModal').modal('show');
                 })
 
-$('#serviceDataTable').dataTable();
+            $('#serviceDataTable').dataTable();
+            $('.dataTables_length').addClass('bs-select');
 
             }
 
