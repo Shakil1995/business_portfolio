@@ -21,11 +21,12 @@
                         <li> <a href="{{url('/')}}" ><span> <i class="fas fa-home"></i> </span><span class="hide-menu">Home</span></a></li>
                         <li> <a href="{{url('/visitor')}}" ><span> <i class="fas fa-users"></i> </span><span class="hide-menu">Visitor</span></a></li>
                     	<li> <a href="{{url('/service')}}" ><span> <i class="fas fa-globe"></i> </span><span class="hide-menu">Services</span></a></li>
-                        <li> <a href="{{url('/course')}}" ><span> <i class="fas fa-globe"></i> </span><span class="hide-menu">Course</span></a></li>
-                        <li> <a href="{{url('/project')}}" ><span> <i class="fas fa-globe"></i> </span><span class="hide-menu">Project</span></a></li>
-                        <li> <a href="{{url('/contact')}}" ><span> <i class="fas fa-globe"></i> </span><span class="hide-menu">Contact</span></a></li>
-                        <li> <a href="{{url('/blog')}}" ><span> <i class="fas fa-globe"></i> </span><span class="hide-menu">Blog</span></a></li>
-                        <li> <a href="{{url('/review')}}" ><span> <i class="fas fa-globe"></i> </span><span class="hide-menu">User Review</span></a></li>
+                        <li> <a href="{{url('/course')}}" ><span> <i class="fab fa-discourse"></i></span><span class="hide-menu">Course</span></a></li>
+                        <li> <a href="{{url('/project')}}" ><span> <i class="fas fa-project-diagram"></i> </span><span class="hide-menu">Project</span></a></li>
+                        <li> <a href="{{url('/contact')}}" ><span><i class="far fa-comments"></i></span><span class="hide-menu">Contact</span></a></li>
+                        <li> <a href="{{url('/blog')}}" ><span><i class="fab fa-blogger"></i></span><span class="hide-menu">Blog</span></a></li>
+                        <li> <a href="{{url('/review')}}" ><span> <i class="fas fa-registered"></i></span><span class="hide-menu">User Review</span></a></li>
+                        {{-- <li> <a href="{{url('/admin')}}" ><span><i class="fas fa-users-cog"></i></span><span class="hide-menu">Admin</span></a></li> --}}
 					</ul>
                 </nav>
             </div>

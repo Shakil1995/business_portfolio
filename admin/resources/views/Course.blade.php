@@ -228,6 +228,10 @@ function getCourseData() {
                 })
 
             }
+
+            $('#course_Table').dataTable({ "order": false });
+                $('.dataTables_length').addClass('bs-select');
+
             else {
                 $('#loaderDivCourses').addClass('d-none');
                 $('#wrongDivCourses').removeClass('d-none');

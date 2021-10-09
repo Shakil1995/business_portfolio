@@ -1,15 +1,12 @@
 @extends('Layout.app2')
 
 @section('content') 
-
 <div class="container ">
 <div class="row justify-content-center d-flex mt-5 mb-5">
-
 <div class="col-md-10 card">
   <div class="row">
     <div style="height: 450px" class="col-md-6 p-3">
-
-      <form  action=" "  class="m-5 loginForm">
+    <form  action=" "  class="m-5 loginForm">
         <div class="form-group">
         <label for="exampleInputEmail1">User Name</label>
          <input required="" name="userName" value="" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter User Name">
@@ -30,22 +27,11 @@
 </div>
 </div>
 
-
-
-
 </div>
 </div>
-
-
 @endsection
-
-
-
 @section('script')
-
  <script type="text/javascript">
-
-
 $('.loginForm').on('submit',function(event){
     event.preventDefault();
     let  formData=$(this).serializeArray();
@@ -68,14 +54,8 @@ axios.post('/onLogin',{
  toastr.error('Login Fail ! Try Again  a !');
 });
 
-
-
 })
 
-
-
 </script>
-
-
 
 @endsection

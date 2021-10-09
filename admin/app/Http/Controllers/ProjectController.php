@@ -13,7 +13,7 @@ class ProjectController extends Controller
     }
 
     function getProjectData(){
-        $result =json_decode(ProjectModel::all());
+        $result =json_decode(ProjectModel::orderBy('id','desc')->get());
         return $result;
     }
 

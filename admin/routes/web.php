@@ -49,7 +49,6 @@ Route::get('/getProjectData','ProjectController@getProjectData')->middleware('lo
 Route::post('/ProjectDetail','ProjectController@getProjectDetails')->middleware('loginCheck');
 
 
-
 Route::post('/ProjectDelete','ProjectController@projectDelete')->middleware('loginCheck');
 Route::post('/ProjectUpdate','ProjectController@projectUpdate')->middleware('loginCheck');
 Route::post('/ProjectAdd','ProjectController@projectAdd')->middleware('loginCheck');
@@ -65,5 +64,19 @@ Route::get('/Logout','LoginController@onLogOut');
 
 
 
+
+
+//Contact Route
+Route::get('/contact','ContactController@ContactIndex')->middleware('loginCheck');
+Route::get('/getContactData','ContactController@getContactData')->middleware('loginCheck');
+Route::get('/ContactDelate','ContactController@contactDelate')->middleware('loginCheck');
+
+
+//Blog Route
+Route::get('/blog','BlogController@BlogIndex')->middleware('loginCheck');
+
+
+//Blog Route
+Route::get('/review','UserReviewController@ReviewIndex')->middleware('loginCheck');
 
 

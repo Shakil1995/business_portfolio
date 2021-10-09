@@ -42,7 +42,7 @@ function getProjectAllData() {
                     $('#projectDeleteID').html(id);
                     $('#projectAddModal').modal('show');
                 })
-                $('#projectDataTable').dataTable();
+                $('#projectDataTable').dataTable({ "order": false });
                 $('.dataTables_length').addClass('bs-select');
 
             } else {

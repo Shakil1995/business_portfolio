@@ -202,7 +202,7 @@ function getServicesAllData() {
                     $('#editModal').modal('show');
                 })
 
-            $('#serviceDataTable').dataTable();
+            $('#serviceDataTable').dataTable({"order":false});
             $('.dataTables_length').addClass('bs-select');
 
             }
