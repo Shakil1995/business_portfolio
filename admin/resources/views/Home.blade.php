@@ -59,8 +59,17 @@
 			</div>
 		</div>
 
+        <div class="col-md-3 p-2">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="count-card-title">{{$totalPhoto}}</h3>
+                    <h3 class="count-card-text">Total Photo</h3>
+                </div>
+            </div>
+        </div>
+
 	</div>
-</div>	
+</div>
 
 @endsection
 

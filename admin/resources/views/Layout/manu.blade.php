@@ -27,6 +27,7 @@
                         <li> <a href="{{url('/blog')}}" ><span><i class="fab fa-blogger"></i></span><span class="hide-menu">Blog</span></a></li>
                         <li> <a href="{{url('/review')}}" ><span> <i class="fas fa-registered"></i></span><span class="hide-menu">User Review</span></a></li>
                         {{-- <li> <a href="{{url('/admin')}}" ><span><i class="fas fa-users-cog"></i></span><span class="hide-menu">Admin</span></a></li> --}}
+                        <li> <a href="{{url('/photo')}}" ><span> <i class="fab fa-discourse"></i></span><span class="hide-menu">photo </span></a></li>
 					</ul>
                 </nav>
             </div>

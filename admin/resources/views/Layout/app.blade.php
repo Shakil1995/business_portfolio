@@ -24,6 +24,8 @@
 
 </div>
 </div>
+
+
   <script src="{{asset('js/jquery-3.4.1.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/popper.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/bootstrap.js')}}"></script>
@@ -40,6 +42,7 @@
 
 
    @yield('script')
+@yield('css')
 
 
 </body>

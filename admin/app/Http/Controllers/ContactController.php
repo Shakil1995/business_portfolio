@@ -30,5 +30,13 @@ class ContactController extends Controller
         }
  
      }
+
+
+     function  getContactDetails (Request $req){
+        $id= $req->input('id');
+        $result =json_decode(ContactModel::where('id','=',$id)->get());
+        return $result;
+    }
+
  
 }

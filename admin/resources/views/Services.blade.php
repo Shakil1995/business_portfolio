@@ -235,14 +235,12 @@ function ServiceDelete(deleteID) {
                 if(response.data==1){
                     $('#deleteModal').modal('hide');
                     toastr.success('Delete Success');
-
                     getServicesAllData()
                 }else {
                     $('#deleteModal').modal('hide');
                     toastr.error('Delete Fail');
                     getServicesAllData()
                 }
-
             }else {
                 $('#deleteModal').modal('hide');
                 toastr.error('Something Went Wrong  !');

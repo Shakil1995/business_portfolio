@@ -10,12 +10,13 @@ use App\ServicesModel;
 use App\ProjectModel;
 use App\VisitorModel;
 use App\user_ReviewModel;
+use App\PhotoModel;
 
 class HomeController extends Controller
 {
  function HomeIndex(){
 
-  
+
    $totalCourse= CoursesModel::count();
    $totalBlog=  BlogModel::count();
    $totalServices=  ServicesModel::count();
@@ -23,6 +24,7 @@ class HomeController extends Controller
    $totalVisitor=   VisitorModel::count();
    $totalReview=   user_ReviewModel::count();
    $totalContact=   ContactModel::count();
+     $totalPhoto=   PhotoModel::count();
 
 
 
@@ -34,6 +36,7 @@ class HomeController extends Controller
       'totalVisitor'=> $totalVisitor,
      'totalReview'=>   $totalReview,
      'totalContact'=>  $totalContact,
+         'totalPhoto'=>  $totalPhoto,
      ]);
  }
 }
