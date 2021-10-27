@@ -78,6 +78,18 @@ Route::get('/ContactDetails','ContactController@getContactDetails')->middleware(
 Route::get('/blog','BlogController@BlogIndex')->middleware('loginCheck');
 
 
+Route::get('/GetBlogData','BlogController@getBlogData')->middleware('loginCheck');
+Route::post('/BlogDelete','BlogController@blogDelete')->middleware('loginCheck');
+Route::post('/AddBlog','BlogController@addBlog')->middleware('loginCheck');
+
+
+
+
+
+
+
+
+
 //Blog Route
 Route::get('/review','UserReviewController@ReviewIndex')->middleware('loginCheck');
 
@@ -89,4 +101,14 @@ Route::get('/photo','PhotoController@PhotoIndex')->middleware('loginCheck');
 Route::post('/photoSave','PhotoController@PhotoSave')->middleware('loginCheck');
 Route::get('/photoJSON','PhotoController@PhotoJSON')->middleware('loginCheck');
 Route::get('/photoJSONByID/{id}','PhotoController@PhotoJSONId')->middleware('loginCheck');
+
+
+
+
+
+
+
+
+
+Route::get('/mstarqrphoto','MastarQRController@MasterQRIndex')->middleware('loginCheck');
 

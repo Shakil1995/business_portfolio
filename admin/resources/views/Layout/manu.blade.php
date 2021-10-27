@@ -28,6 +28,8 @@
                         <li> <a href="{{url('/review')}}" ><span> <i class="fas fa-registered"></i></span><span class="hide-menu">User Review</span></a></li>
                         {{-- <li> <a href="{{url('/admin')}}" ><span><i class="fas fa-users-cog"></i></span><span class="hide-menu">Admin</span></a></li> --}}
                         <li> <a href="{{url('/photo')}}" ><span> <i class="fab fa-discourse"></i></span><span class="hide-menu">photo </span></a></li>
+
+                        <li> <a href="{{url('/mstarqrphoto')}}" ><span> <i class="fab fa-discourse"></i></span><span class="hide-menu">mstarqr Photo </span></a></li>
 					</ul>
                 </nav>
             </div>

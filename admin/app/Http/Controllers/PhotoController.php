@@ -13,8 +13,8 @@ class PhotoController extends Controller
     }
 
     function PhotoJSON(Request $request){
-
-        return PhotoModel::take(3)->get();
+        $allPhoto=PhotoModel::orderBy('id','desc')->get();
+        return  $allPhoto;
     }
 
 //
@@ -25,11 +25,11 @@ class PhotoController extends Controller
 //    }
 
 
-    function PhotoJSONId(Request $request){
-        $FirstID=$request->id;
-        $LastID=$FirstID+3;
-        return PhotoModel::where('id','>=',$FirstID)->where('id','<',$LastID)->get();
-    }
+    // function PhotoJSONId(Request $request){
+    //     $FirstID=$request->id;
+    //     $LastID=$FirstID+3;
+    //     return PhotoModel::where('id','>=',$FirstID)->where('id','<',$LastID)->get();
+    // }
 
 
 

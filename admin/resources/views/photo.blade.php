@@ -18,9 +18,8 @@
 
     <div class="row photoRow">
 
-
-
     </div>
+    
     <button class="btn btn-sm btn-primary" id="LoadMoreBtn"> Load More </button>
 
 </div>
@@ -41,15 +40,8 @@
 
 
     <!-- Photo Add Modal -->
-    <div
-        class="modal fade  "
-        id="addPhotoModal"
-        data-mdb-backdrop="static"
-        data-mdb-keyboard="false"
-        tabindex="-1"
-        aria-labelledby="staticBackdropLabel"
-        aria-hidden="true"
-    >
+    <div class="modal fade  " id="addPhotoModal" data-mdb-backdrop="static" 
+     data-mdb-keyboard="false" tabindex="-1"  aria-labelledby="staticBackdropLabel"  aria-hidden="true" >
         <div class="modal-dialog">
             <div class="modal-content  ">
 
@@ -110,10 +102,7 @@ $('#saveImage').on('click',function () {
     });
 
 });
-
-
   LoadPhoto();
-
 function LoadPhoto() {
     axios.get("/photoJSON").then(function (response) {
 let JSONPhotoData=response.data;
@@ -123,47 +112,44 @@ let JSONPhotoData=response.data;
                 "<img data-id="+item['id']+"  class='imgOnRow' src="+item['photo_location'] +">"
             ).appendTo('.photoRow');
     });
-
-
     }).catch(function (error) {
-
     });
-
 }
 
-$('#LoadMoreBtn').on('click',function(){
-    let loadMoreBtn=$(this);
-  let firstImgID=  $(this).closest('div').find('img').data('id');
-    LoadById(firstImgID,loadMoreBtn)
-})
+
+// $('#LoadMoreBtn').on('click',function(){
+//     let loadMoreBtn=$(this);
+//   let firstImgID=  $(this).closest('div').find('img').data('id');
+//     LoadById(firstImgID,loadMoreBtn)
+// })
 
 
- ImgId=0;
-    function LoadById(firstImgId,loadMoreBtn) {
- ImgId=ImgId+2;
-let photoID=ImgId+firstImgId;
+//  ImgId=0;
+//     function LoadById(firstImgId,loadMoreBtn) {
+//  ImgId=ImgId+2;
+// let photoID=ImgId+firstImgId;
 
-    // let URL="/photoJSONByID/{id}"+photoID;
+//     // let URL="/photoJSONByID/{id}"+photoID;
 
 
-  // loadMoreBtn.html("<div class='spinner-border spinner-border-sm' role='status'></div>")
-        axios.get('/photoJSONByID/{id}+photoID')
-            .then(function (response) {
-                console.log(response.data);
-            loadMoreBtn.html("Load More");
-            $.each(response.data, function(i, item) {
+//   // loadMoreBtn.html("<div class='spinner-border spinner-border-sm' role='status'></div>")
+//         axios.get('/photoJSONByID/{id}+photoID')
+//             .then(function (response) {
+//                 console.log(response.data);
+//             loadMoreBtn.html("Load More");
+//             $.each(response.data, function(i, item) {
 
-                $(" <div class='col-md-3 p-1' >").html(
-                    "<img data-id="+item['id']+"  class='imgOnRow' src="+item['photo_location'] +">"
-                ).appendTo('.photoRow');
-            });
-            toastr.error('this is wrong internal');
-        }).catch(function (error) {
-            toastr.error('this is wrong');
+//                 $(" <div class='col-md-3 p-1' >").html(
+//                     "<img data-id="+item['id']+"  class='imgOnRow' src="+item['photo_location'] +">"
+//                 ).appendTo('.photoRow');
+//             });
+//             toastr.error('this is wrong internal');
+//         }).catch(function (error) {
+//             toastr.error('this is wrong');
 
-        });
+//         });
 
-    }
+//     }
 
 
 </script>
